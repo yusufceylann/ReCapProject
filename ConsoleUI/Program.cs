@@ -32,7 +32,7 @@ namespace ConsoleUI
             {
                 Console.WriteLine(color.ColorName);
             }
-        }
+            }
 
         private static void CarTest()
         {
