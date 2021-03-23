@@ -10,13 +10,13 @@ namespace ConsoleUI
         static void Main(string[] args)
         {
             //Data Transformation Object - DTO
-            CarTest();
-            //ColorTest();
+            //CarTest();
+            ColorTest();
             //BrandTest();
 
         }
 
-        private static void BrandTest()
+        /*private static void BrandTest()
         {
             BrandManager brandManager = new BrandManager(new EfBrandDal());
             foreach (var brand in brandManager.GetAll())
@@ -24,13 +24,23 @@ namespace ConsoleUI
                 Console.WriteLine(brand.BrandName);
             }
         }
-
+        */
         private static void ColorTest()
         {
             ColorManager colorManager = new ColorManager(new EfColorDal());
-            foreach (var color in colorManager.GetAll())
+
+            var result = colorManager.GetAll();
+
+            if (result.Success == true)
             {
-                Console.WriteLine(color.ColorName);
+                foreach (var color in result.Data)
+                {
+                    Console.WriteLine(color.ColorName);
+                }
+            }
+            else
+            {
+                Console.WriteLine(result.Message);
             }
         }
 
